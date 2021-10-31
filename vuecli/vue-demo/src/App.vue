@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    {{ $store.state.user.name }}
+    {{ $store.state.user.num }}
+    <button @click="addStoreUserNum">增加</button>
+    <button @click="addNumByAction">异步增加</button>
     <input v-model="message" />
     <input :value="message" @input="handleChange" />
     <p :title.sync="message">p标签</p>
@@ -45,6 +49,12 @@ export default {
     };
   },
   methods: {
+    addNumByAction() {
+      this.$store.dispatch("user/addAction", 2);
+    },
+    addStoreUserNum() {
+      this.$store.commit("user/addNum", 1);
+    },
     handleDelete(val) {
       console.log("handleDelete", val);
     },
