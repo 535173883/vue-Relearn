@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <todoList>
+    <input v-model="message" />
+    <input :value="message" @input="handleChange" />
+    <p :title.sync="message">p标签</p>
+    <span>{{ message }}</span>
+    <todoList ref="todoList">
       <todoItem
         v-for="(item, index) in list"
         :title="item.title"
@@ -27,6 +31,7 @@ export default {
   },
   data() {
     return {
+      message: "hello",
       list: [
         {
           title: "课程1",
@@ -37,12 +42,19 @@ export default {
           del: false,
         },
       ],
-      methods: {
-        handleDelete(val) {
-          console.log("handleDelete", val);
-        },
-      },
     };
+  },
+  methods: {
+    handleDelete(val) {
+      console.log("handleDelete", val);
+    },
+    handleChange(e) {
+      console.log(e);
+      this.message = e.target.value;
+    },
+  },
+  mounted() {
+    console.log(this.$refs.todoList);
   },
 };
 </script>
