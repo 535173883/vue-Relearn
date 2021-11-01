@@ -4,7 +4,10 @@
     {{ $store.state.user.num }}
     <button @click="addStoreUserNum">增加</button>
     <button @click="addNumByAction">异步增加</button>
+    <br />
+    <span>getters：</span>
     {{ doubleNum }}
+    <br />
     <input v-model="message" />
     <input :value="message" @input="handleChange" />
     <p :title.sync="message">p标签</p>
@@ -21,6 +24,9 @@
         >
       </todoItem>
     </todoList>
+    <br />
+    <h2>路由页面</h2>
+    <router-view></router-view>
   </div>
 </template>
 
