@@ -4,6 +4,7 @@
     {{ $store.state.user.num }}
     <button @click="addStoreUserNum">增加</button>
     <button @click="addNumByAction">异步增加</button>
+    {{ doubleNum }}
     <input v-model="message" />
     <input :value="message" @input="handleChange" />
     <p :title.sync="message">p标签</p>
@@ -47,6 +48,11 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    doubleNum() {
+      return this.$store.getters["user/doubleNum"];
+    },
   },
   methods: {
     addNumByAction() {
