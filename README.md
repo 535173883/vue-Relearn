@@ -19,4 +19,4 @@ vue 重学笔记
 
 ### vuecli > test-demo：
 
-- [] vue 单元测试 测试工具 jest 测试插件 sinon 监听测试命令 npm xxx -- --watchAll
+- [ ] vue 单元测试 测试工具 jest 测试插件 sinon 监听测试命令 npm xxx -- --watchAll
