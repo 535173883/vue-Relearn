@@ -1,4 +1,7 @@
-目录名规范
+# 目录名规范
+
+```bash
+
 my-project-name/
 |- BuildScript // 流水线部署文件目录
 |- docs // 项目的细化文档目录（可选）
@@ -41,4 +44,6 @@ my-project-name/
 |- README.md // 项目 README
 |- vue.config.js // webpack 配置
 
-其他规范： url 'https://juejin.cn/post/6987349513836953607'
+```
+
+[其他规范： url]('https://juejin.cn/post/6987349513836953607')
