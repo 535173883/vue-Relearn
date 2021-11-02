@@ -46,4 +46,4 @@ my-project-name/
 
 ```
 
-[其他规范]('https://juejin.cn/post/6987349513836953607')
+[其他规范](https://juejin.cn/post/6987349513836953607)
