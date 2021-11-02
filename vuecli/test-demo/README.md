@@ -1,4 +1,9 @@
 # test-demo
+单元测试     
+监听测试命令
+npm test -- --watchAll
+测试工具   jest
+其他插件  sinon   
 
 ## Project setup
 ```
