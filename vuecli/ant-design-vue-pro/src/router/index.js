@@ -2,13 +2,14 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Nprogress from "nprogress";
 import "nprogress/nprogress.css";
-import Home from "../views/Home.vue";
+// import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/user",
+    hideInMenu: true,
     // component: { render: (h) => h("router-view") },//render 函数直接渲染
     component: () =>
       import(/* webpackChunkName: "userlayout" */ "../layout/UserLayout"),
@@ -186,11 +187,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "exception" */ "@/views/Exception/404"),
   },
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
 ];
 
 const router = new VueRouter({
@@ -200,7 +196,10 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, form, next) => {
-  Nprogress.start();
+  if (to.path !== form.path) {
+    Nprogress.start();
+  }
+
   next();
 });
 
