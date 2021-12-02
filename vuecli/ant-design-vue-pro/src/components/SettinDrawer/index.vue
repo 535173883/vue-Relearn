@@ -46,6 +46,7 @@ export default {
     handleSettingChange(type, value) {
       this.$router.push({ query: { ...this.$route.query, [type]: value } });
       console.log(this.$route.query.navTheme);
+      console.log(this.$route.query.navTheme);
     },
     onClose() {
       this.visible = false;
