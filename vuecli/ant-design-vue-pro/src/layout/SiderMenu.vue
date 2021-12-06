@@ -2,13 +2,16 @@
   <div style="width: 256px">
     <a-menu
       :selected-keys="selectedKeys"
-      :open-keys="openKeys"
+      :open-keys.sync="openKeys"
       mode="inline"
       :theme="navTheme"
-      :inline-collapsed="collapsed"
     >
       <template v-for="item in menuData">
-        <a-menu-item v-if="!item.children" :key="item.path">
+        <a-menu-item
+          v-if="!item.children"
+          :key="item.path"
+          @click="() => $router.push({ path: item.path, query: $route.query })"
+        >
           <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
           <span>{{ item.meta.title }}</span>
         </a-menu-item>
@@ -56,10 +59,10 @@ export default {
     },
     getMenuData(routes = [], parentKeys = [], selectedKey) {
       const menuData = [];
-      routes.forEach((item) => {
+      for (let item of routes) {
         if (item.name && !item.hideInMenu) {
           this.openKeysMap[item.path] = parentKeys;
-          this.selectedKeysMap[item.path] = [item.path || selectedKey];
+          this.selectedKeysMap[item.path] = [selectedKey || item.path];
           const newItem = { ...item };
           delete newItem.children;
           if (item.children && !item.hideChildrenInMenu) {
@@ -80,13 +83,12 @@ export default {
           !item.hideChildrenInMenu &&
           item.children
         ) {
-          menuData.push(...this.getMenuData(item.children), [
-            ...parentKeys,
-            item.path,
-          ]);
+          menuData.push(
+            ...this.getMenuData(item.children, [...parentKeys, item.path])
+          );
         }
-      });
-      console.log(menuData, "--------------");
+      }
+
       return menuData;
     },
   },
