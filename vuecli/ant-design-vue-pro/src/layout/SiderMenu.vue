@@ -23,6 +23,7 @@
 
 <script>
 import SubMenu from "./SubMenu.vue";
+import { check } from "../utils/auth";
 export default {
   props: {
     navTheme: {
@@ -60,6 +61,9 @@ export default {
     getMenuData(routes = [], parentKeys = [], selectedKey) {
       const menuData = [];
       for (let item of routes) {
+        if (item.meta && item.meta.authority && !check(item.meta.authority)) {
+          continue;
+        }
         if (item.name && !item.hideInMenu) {
           this.openKeysMap[item.path] = parentKeys;
           this.selectedKeysMap[item.path] = [selectedKey || item.path];
@@ -88,7 +92,6 @@ export default {
           );
         }
       }
-
       return menuData;
     },
   },

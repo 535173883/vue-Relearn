@@ -33,7 +33,9 @@
         </a-layout-footer>
       </a-layout>
     </a-layout>
-    <SettinDrawer></SettinDrawer>
+    <Authorized :authority="['admin']">
+      <SettinDrawer></SettinDrawer>
+    </Authorized>
   </div>
 </template>
 
@@ -56,7 +58,6 @@ export default {
   },
   computed: {
     navTheme() {
-      console.log(this.$route.query.navTheme, "------------");
       return this.$route.query.navTheme || "dark";
     },
     navLayout() {

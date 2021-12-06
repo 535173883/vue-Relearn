@@ -1,7 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Nprogress from "nprogress";
+import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import { notification } from "ant-design-vue";
+import findLast from "lodash/findLast";
+import { check, isLogin } from "../utils/auth";
 // import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
@@ -195,16 +198,33 @@ const router = new VueRouter({
   routes,
 });
 
-router.beforeEach((to, form, next) => {
-  if (to.path !== form.path) {
-    Nprogress.start();
+router.beforeEach((to, from, next) => {
+  if (to.path !== from.path) {
+    NProgress.start();
+  }
+  const record = findLast(to.matched, (record) => record.meta.authority);
+  if (record && !check(record.meta.authority)) {
+    if (!isLogin() && to.path !== "/user/login") {
+      next({
+        path: "/user/login",
+      });
+    } else if (to.path !== "/403") {
+      notification.error({
+        message: "403",
+        description: "你没有权限访问，请联系管理员咨询。",
+      });
+      next({
+        path: "/403",
+      });
+    }
+    NProgress.done();
   }
 
   next();
 });
 
 router.afterEach(() => {
-  Nprogress.done();
+  NProgress.done();
 });
 
 export default router;
