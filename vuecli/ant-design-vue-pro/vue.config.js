@@ -17,7 +17,7 @@ module.exports = {
           } else {
             const name = req.path.split("/api/")[1].split("/").join("_");
             const mock = require(`./mock/${name}`);
-            const result = mock(req);
+            const result = mock(req.method);
             delete require.cache[require.resolve(`./mock/${name}`)];
             return res.send(result);
           }

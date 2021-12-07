@@ -1,6 +1,6 @@
-function chart(methods) {
+function chart(method) {
   let res = null;
-  switch (methods) {
+  switch (method) {
     case "GET":
       res = [30, 20, 45, 78, 25, 42];
       break;
