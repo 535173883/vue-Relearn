@@ -11,6 +11,7 @@ import {
   Menu,
   Form,
   Input,
+  Select,
 } from "ant-design-vue";
 import "ant-design-vue/lib/button/style";
 import Authorized from "./components/Authorized";
@@ -25,6 +26,7 @@ Vue.use(Radio);
 Vue.use(Menu);
 Vue.use(Form);
 Vue.use(Input);
+Vue.use(Select);
 Vue.component("Authorized", Authorized);
 Vue.use(Auth);
 new Vue({

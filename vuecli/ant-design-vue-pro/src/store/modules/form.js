@@ -1,4 +1,4 @@
-import request from "../../utils/request";
+// import request from "../../utils/request";
 import router from "../../router/index";
 
 const state = {
@@ -8,12 +8,13 @@ const state = {
 };
 
 const actions = {
-  async submitStepForm({ commit }, { payload }) {
-    await request({
-      url: "/api/forms",
-      method: "POST",
-      data: payload,
-    });
+  async submitStepForm({ commit }, payload) {
+    // await request({
+    //   url: "/api/forms",
+    //   method: "POST",
+    //   data: payload.payload,
+    // });
+    await Promise.resolve("success");
     commit("saveStepFormData", { payload });
     router.push("/form/step-form/result");
   },

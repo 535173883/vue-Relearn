@@ -19,7 +19,7 @@
         <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
         <span>{{ item.meta.title }}</span>
       </a-menu-item>
-      <sub-menu v-else :key="item.path" :menu-info="item" />
+      <sub-menu v-else :key="item.title" :menu-info="item" />
     </template>
   </a-sub-menu>
 </template>
