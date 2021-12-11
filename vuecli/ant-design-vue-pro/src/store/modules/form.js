@@ -14,7 +14,7 @@ const actions = {
     //   method: "POST",
     //   data: payload.payload,
     // });
-    await Promise.resolve("success");
+    await Promise.resolve("success"); //假装发起请求
     commit("saveStepFormData", { payload });
     router.push("/form/step-form/result");
   },

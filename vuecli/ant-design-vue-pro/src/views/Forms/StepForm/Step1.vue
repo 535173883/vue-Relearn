@@ -46,6 +46,7 @@
       </a-form-item>
       <a-form-item>
         <a-button type="primary" @click="handleSubmit">下一步</a-button>
+        <logo />
       </a-form-item>
     </a-form>
   </div>
@@ -53,9 +54,11 @@
 
 <script>
 import ReceiverAccount from "@/components/ReceiverAccount";
+import logo from "../../../assets/logo.svg";
 export default {
   components: {
     ReceiverAccount,
+    logo,
   },
   data() {
     return {
