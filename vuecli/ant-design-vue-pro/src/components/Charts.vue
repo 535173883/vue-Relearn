@@ -4,6 +4,7 @@
 
 <script>
 import * as echarts from "echarts";
+
 import debounce from "lodash/debounce";
 import { addListener, removeListener } from "resize-detector";
 export default {

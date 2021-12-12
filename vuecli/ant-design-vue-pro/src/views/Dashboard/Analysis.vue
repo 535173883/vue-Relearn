@@ -1,6 +1,9 @@
 <template>
   <div>
+    {{ $t("message")["app.dashboard.analysis.timeLabel"] }} :
+    <a-date-picker></a-date-picker>
     <Charts :option="chartOption" style="height: 400px"></Charts>
+    <pre v-highlightjs="chartCode"><code class="html"></code></pre>
   </div>
 </template>
 
@@ -8,6 +11,7 @@
 import axios from "axios";
 // import random from "lodash/random";
 import Charts from "../../components/Charts.vue";
+import chartCode from "!!raw-loader!../../components/Charts";
 export default {
   components: {
     Charts,
@@ -15,6 +19,7 @@ export default {
   data() {
     return {
       chartOption: {},
+      chartCode,
     };
   },
   beforeDestroy() {
